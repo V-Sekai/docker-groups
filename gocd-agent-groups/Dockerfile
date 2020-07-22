@@ -5,5 +5,5 @@ RUN alternatives --set ld /usr/bin/ld.gold && git lfs install
 RUN git clone https://github.com/emscripten-core/emsdk /opt/emsdk && /opt/emsdk/emsdk install latest
 # https://dl.google.com/android/repository/commandlinetools-linux-6514223_latest.zip
 RUN curl -LO https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip && unzip sdk-tools-linux-4333796.zip -d /opt/android && rm sdk-tools-linux-4333796.zip && yes | /opt/android/tools/bin/sdkmanager --licenses && /opt/android/tools/bin/sdkmanager ndk-bundle 'platforms;android-23' 'build-tools;19.1.0' 'build-tools;28.0.3' 'platforms;android-28'
-RUN git config --global url.git@gitlab.com:.insteadOf https://gitlab.com/
 USER go
+RUN git config --global url.git@gitlab.com:.insteadOf https://gitlab.com/
