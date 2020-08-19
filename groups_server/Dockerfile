@@ -12,6 +12,10 @@ LABEL godot_revision="$GODOT_REVISION" \
 
 COPY "$SERVER_EXPORT" /server
 
+RUN "chmod +x /server/v_sekai_linux_server && useradd -u 1111 unpriv"
+
+USER unpriv
+
 WORKDIR "/server"
 
 ENTRYPOINT ["/server/v_sekai_linux_server"]
