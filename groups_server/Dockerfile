@@ -14,7 +14,9 @@ LABEL godot_revision="$GODOT_REVISION" \
 
 COPY "$SERVER_EXPORT" /server
 
-RUN chmod +x /server/v_sekai_linux_server && useradd -u 1111 unpriv
+# Avoid RUN commands to keep image size small.
+# RUN chmod +x /server/v_sekai_linux_server && useradd -u "$USER" unpriv
+# The USER does not need to be created
 
 USER "$USER"
 
