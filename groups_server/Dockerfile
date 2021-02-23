@@ -13,7 +13,7 @@ LABEL godot_revision="$GODOT_REVISION" \
   url="https://github.com/V-Sekai/docker-groups"
 
 COPY "$SERVER_EXPORT" libatomic-10.2.1-9.fc32.x86_64.rpm /server/
-RUN yum install -i /server/libatomic-10.2.1-9.fc32.x86_64.rpm && rm -f /server/libatomic-10.2.1-9.fc32.x86_64.rpm
+RUN rpm install -i /server/libatomic-10.2.1-9.fc32.x86_64.rpm && rm -f /server/libatomic-10.2.1-9.fc32.x86_64.rpm
 
 # Avoid RUN commands to keep image size small.
 # RUN chmod +x /server/v_sekai_linux_server && useradd -u "$USER" unpriv
