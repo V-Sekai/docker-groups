@@ -7,6 +7,8 @@ ARG SERVER_EXPORT="/workspace/server_export"
 ARG USER="root"
 ARG HOME="/root"
 
+RUN yum install -y libatomic
+
 LABEL godot_revision="$GODOT_REVISION" \
   groups_revision="$GROUPS_REVISION" \
   description="Exported groups server" \
