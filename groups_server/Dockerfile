@@ -26,4 +26,4 @@ ENV USER="$USER"
 
 WORKDIR "/server"
 
-ENTRYPOINT ["/server/v_sekai_linux_server"]
+ENTRYPOINT ["/server/v_sekai_linuxbsd"]
