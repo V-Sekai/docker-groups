@@ -13,7 +13,7 @@ LABEL godot_revision="$GODOT_REVISION" \
   url="https://github.com/V-Sekai/docker-groups"
 
 
-RUN yum install libatomic libXcursor -yq
+RUN yum install libatomic libXcursor -yq -4
 
 RUN yum clean all
 
