@@ -1,4 +1,4 @@
-FROM docker.io/gocd/gocd-agent-centos-8:v21.2.0
+FROM docker.io/gocd/gocd-agent-centos-8:v21.3.0
 USER root
 RUN cd /usr/local/bin && curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default && unzip butler.zip && rm butler.zip && butler -V && butler -V && cd && butler -V
 RUN yum install -y epel-release dnf-plugins-core && yum config-manager -y --set-enabled powertools && curl https://download.mono-project.com/repo/centos8-stable.repo | tee /etc/yum.repos.d/mono-stable.repo && yum update -y
