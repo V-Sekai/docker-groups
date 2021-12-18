@@ -13,11 +13,9 @@ LABEL godot_revision="$GODOT_REVISION" \
   url="https://github.com/V-Sekai/docker-groups"
 
 
-RUN yum update -yq
-
-RUN yum install libatomic libXcursor -yq
-
-RUN yum clean all
+RUN dnf update --refresh
+RUN dnf install libatomic libXcursor -yq
+RUN dnf clean all
 
 # Avoid RUN commands to keep image size small.
 # RUN chmod +x /server/v_sekai_linux_server && useradd -u "$USER" unpriv
