@@ -1,4 +1,4 @@
-FROM fedora:35
+FROM fedora:34
 
 # Default args. Shouldn't get used.
 ARG GODOT_REVISION="unknown"
