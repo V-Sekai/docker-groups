@@ -12,11 +12,10 @@ LABEL godot_revision="$GODOT_REVISION" \
   description="Exported groups server" \
   url="https://github.com/V-Sekai/docker-groups"
 
-COPY "$SERVER_EXPORT" libatomic-10.2.1-9.fc32.x86_64.rpm /server/
-RUN rpm -i /server/libatomic-10.2.1-9.fc32.x86_64.rpm && rm -f /server/libatomic-10.2.1-9.fc32.x86_64.rpm
 
-COPY "$SERVER_EXPORT" libXcursor-1.2.0-6.fc35.x86_64.rpm /server/
-RUN rpm -i /server/libXcursor-1.2.0-6.fc35.x86_64.rpm && rm -f /server/libXcursor-1.2.0-6.fc35.x86_64.rpm
+RUN yum install libatomic libXcursor -yq
+
+RUN yum clean all
 
 # Avoid RUN commands to keep image size small.
 # RUN chmod +x /server/v_sekai_linux_server && useradd -u "$USER" unpriv
