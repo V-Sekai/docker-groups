@@ -15,7 +15,7 @@ LABEL godot_revision="$GODOT_REVISION" \
 
 RUN yum update -yq
 
-RUN yum install libatomic libXcursor -yq -4
+RUN yum install libatomic libXcursor -yq
 
 RUN yum clean all
 
