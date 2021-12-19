@@ -13,7 +13,6 @@ LABEL godot_revision="$GODOT_REVISION" \
   url="https://github.com/V-Sekai/docker-groups"
 
 COPY "$SERVER_EXPORT" /server/
-RUN dnf update --refresh -yq
 RUN dnf install libatomic libXcursor libXinerama -yq
 RUN dnf clean all
 
