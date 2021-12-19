@@ -14,7 +14,7 @@ LABEL godot_revision="$GODOT_REVISION" \
 
 COPY "$SERVER_EXPORT" /server/
 RUN dnf update --refresh -yq
-RUN dnf install libatomic libXcursor -yq
+RUN dnf install libatomic libXcursor libXinerama -yq
 RUN dnf clean all
 
 # Avoid RUN commands to keep image size small.
