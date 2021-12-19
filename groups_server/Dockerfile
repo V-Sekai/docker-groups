@@ -12,7 +12,7 @@ LABEL godot_revision="$GODOT_REVISION" \
   description="Exported groups server" \
   url="https://github.com/V-Sekai/docker-groups"
 
-
+COPY "$SERVER_EXPORT" /server/
 RUN dnf update --refresh -yq
 RUN dnf install libatomic libXcursor -yq
 RUN dnf clean all
