@@ -13,8 +13,7 @@ LABEL godot_revision="$GODOT_REVISION" \
   url="https://github.com/V-Sekai/docker-groups"
 
 COPY "$SERVER_EXPORT" /server/
-RUN dnf install libatomic libXcursor libXinerama libXrandr libXi dbus-libs libGL -yq
-RUN dnf clean all
+RUN dnf install libatomic libXcursor libXinerama libXrandr libXi dbus-libs libGL -yq && dnf clean all && mkdir -m 01777 "$HOME/.local" "$HOME/.cache" "$HOME/.config"
 
 # Avoid RUN commands to keep image size small.
 # RUN chmod +x /server/v_sekai_linux_server && useradd -u "$USER" unpriv
