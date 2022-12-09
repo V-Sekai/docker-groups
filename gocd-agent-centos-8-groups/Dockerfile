@@ -9,6 +9,8 @@ RUN mkdir /opt/llvm-mingw && curl -L https://github.com/mstorsjo/llvm-mingw/rele
 RUN git clone https://github.com/emscripten-core/emsdk /opt/emsdk && /opt/emsdk/emsdk install latest && /opt/emsdk/emsdk activate latest && curl -L -o ispc.tgz 'https://github.com/ispc/ispc/releases/download/v1.15.0/ispc-v1.15.0-linux.tar.gz' && tar -zxf ispc.tgz ispc-v1.15.0-linux/bin/ispc && mv ispc-v1.15.0-linux/bin/ispc /usr/local/bin/ispc && rmdir -p ispc-v1.15.0-linux/bin
 # https://dl.google.com/android/repository/commandlinetools-linux-6514223_latest.zip
 RUN curl -L -o cmdlinetools.zip https://dl.google.com/android/repository/commandlinetools-linux-9123335_latest.zip && mkdir -p /opt/android && unzip cmdlinetools.zip -d /opt/android && mv /opt/android/cmdline-tools /opt/android/tools && rm cmdlinetools.zip && yes | /opt/android/tools/bin/sdkmanager --licenses && /opt/android/tools/bin/sdkmanager ndk-bundle 'platforms;android-23' 'build-tools;19.1.0' 'build-tools;31.0.3' 'platforms;android-31'
+ENV RUSTUP_HOME=/opt/rust CARGO_HOME=/opt/cargo PATH=/opt/cargo/bin:/opt/rust/bin:$PATH
+RUN mkdir -p /opt/cargo /opt/rust && chown go /opt/cargo && curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly --no-modify-path && rustup default nightly && rustup target add aarch64-linux-android x86_64-linux-android x86_64-unknown-linux-gnu aarch64-apple-ios x86_64-apple-ios x86_64-apple-darwin aarch64-apple-darwin x86_64-pc-windows-gnu x86_64-pc-windows-msvc wasm32-wasi
 RUN cp -p /usr/lib/gcc/x86_64*/*/libatomic.a /usr/lib64/libatomic.a
 USER go
 RUN git config --global url.git@gitlab.com:.insteadOf https://gitlab.com/
