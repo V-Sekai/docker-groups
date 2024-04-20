@@ -11,7 +11,7 @@ RUN git clone https://github.com/emscripten-core/emsdk /opt/emsdk && /opt/emsdk/
 ENV RUSTUP_HOME=/opt/rust CARGO_HOME=/opt/cargo PATH=/opt/cargo/bin:/opt/rust/bin:$PATH
 RUN mkdir -p /opt/cargo /opt/rust && chown go /opt/cargo && curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly --no-modify-path && rustup default nightly && rustup target add aarch64-linux-android x86_64-linux-android x86_64-unknown-linux-gnu aarch64-apple-ios x86_64-apple-ios x86_64-apple-darwin aarch64-apple-darwin x86_64-pc-windows-gnu x86_64-pc-windows-msvc wasm32-wasi
 RUN cp -p /usr/lib/gcc/x86_64*/*/libatomic.a /usr/lib64/libatomic.a
-RUN wget https://download.blender.org/release/Blender4.1/blender-4.1.1-linux-x64.tar.xz && \
+RUN curl -O https://download.blender.org/release/Blender4.1/blender-4.1.1-linux-x64.tar.xz && \
     tar -xf blender-4.1.1-linux-x64.tar.xz -C /opt/ && \
     rm blender-4.1.1-linux-x64.tar.xz && \
     ln -s /opt/blender-4.1.1-linux-x64/blender /usr/local/bin/blender
